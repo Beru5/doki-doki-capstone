@@ -6,9 +6,8 @@ from joblib import load
 load_dotenv()
 
 PROJECT_ROOT = Path(os.getenv("PROJECT_ROOT", ".")).resolve()
-MODEL_PATH = PROJECT_ROOT / os.getenv("MODEL_DIR", "model_dir") / os.getenv("MODEL_NAME")
 
-# Load model scikit-learn
+MODEL_PATH = PROJECT_ROOT / "model_dir" / "medbuddy_model.joblib"
 model = load(MODEL_PATH)
 
 def predict(input_data: dict):
