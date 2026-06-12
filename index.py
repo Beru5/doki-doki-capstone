@@ -7,7 +7,6 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# Validasi data masuk dengan Pydantic (Aman dari data korup/malicious)
 class HeartDiseaseInput(BaseModel):
     age: int
     sex: int
@@ -30,10 +29,8 @@ def health_check():
 @app.post("/api/predict")
 def predict_heart_disease(input_data: HeartDiseaseInput):
     try:
-        # Ubah data pydantic menjadi dictionary biasa
         data_dict = input_data.model_dump()
         
-        # Jalankan fungsi predictor
         result = predict(input_data=data_dict)
         
         return {
